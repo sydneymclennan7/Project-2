@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li><a href="Part II (webpage).html#Food Trucks">Food Trucks</a></li>
+                <li><a href="Part II (webpage).html#map">Map</a></li>
+                <li><a href="Part II (webpage).html#Order">Order</a></li>
+            </ul>
+        </nav>
+    </div>
+    <header>
+        <h2 style="text-align: center;">About Us</h2>
+    </header>
+    <main>
+        <div id="about-content">
+            <p>Hi! This is the food truck tracker map! It is here to make lunch more efficient and delicious! Click on this paragraph for a reminder to order :)</p>
+        </div>
+<script>
+$(document).ready(function(){
+    $("p").click(function() {
+        alert("Order Now!!");
+    });
+});
+</script>
+    </main>
+</body>
+
+</html>

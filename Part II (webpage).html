@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Truck Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+</head>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+<body>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#Food Trucks">Food Trucks</a></li>
+                <li><a href="#map">Map</a></li>
+                <li><a href="#Order">Order</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </div>
+    <header>
+        <h2 style="text-align: center;">FOOD TRUCK TRACKER</h2>
+        <nav>
+            <select id="food-truck-select" onchange="showSelectedTruck()">
+                <option value="">Select a Food Truck</option>
+                <option value="The Hotdog Hub">The Hotdog Hub</option>
+                <option value="Mexican Mates">Mexican Mates</option>
+                <option value="All-American Grill">All-American Grill</option>
+            </select>
+        </nav>
+    </header>
+    <main>
+        <div id="map" style="width: 600px; height: 400px"></div>
+        
+        <div id="map-placeholder">INTERACTIVE MAP WOULD BE INSERTED HERE</div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<button id="toggleWireframe">Swap Wireframe</button>
+<img id="wireframe" src="wireframe.png" alt="Wireframe" style="max-width: 250px;">
+<img id="mobile-wireframe" src="wireframemobile.png" alt="Mobile Wireframe" style="max-width: 250px; display: none;">
+
+<script>
+    $(document).ready(function() {
+        $('#toggleWireframe').click(function() {
+            $('#wireframe, #mobile-wireframe').toggle();
+        });
+    });
+    const foodTrucks = [
+                {
+                    name: "The Hotdog Hub",
+                    location: "W Georgia and Howe",
+                    menu: "Beef dog, Pork dog, Vancouver dog",
+                    image: "hotdog_hub.jpg"
+                },
+                {
+                    name: "Mexican Mates",
+                    location: "W Georgia and Granville",
+                    menu: "Shrimp Taco, Fish Taco, Bean Burrito",
+                    image: "mexican_mates.jpg"
+                },
+                {
+                    name: "All-American Grill",
+                    location: "W Georgia (Art Gallery)",
+                    menu: "Burger & Fries, Mac n' Cheese",
+                    image: "all_american_grill.jpg"
+                }
+            ];
+</script>
+        <div id="truck-container">
+   <div class="truck-card" id="The Hotdog Hub">
+                <img src="hotdog_hub.jpg" alt="The Hotdog Hub">
+                <h3><b>The Hotdog Hub</b></h3>
+                <p><strong>Location:</strong> W Georgia and Howe</p>
+                <p><strong>Menu:</strong> Beef dog, Pork dog, Vancouver dog</p>
+                <button onclick="orderNow('The Hotdog Hub')">Order Now</button>
+            </div>
+</div>
+            <div class="truck-card" id="Mexican Mates">
+                <img src="mexican_mates.jpg" alt="Mexican Mates">
+                <h3><b>Mexican Mates</b></h3>
+                <p><strong>Location:</strong> W Georgia and Granville</p>
+                <p><strong>Menu:</strong> Shrimp Taco, Fish Taco, Bean Burrito</p>
+                <button onclick="orderNow('Mexican Mates')">Order Now</button>
+            </div>
+            <div class="truck-card" id="All-American Grill">
+                <img src="all_american_grill.jpg" alt="All-American Grill">
+                <h3><b>All-American Grill</b></h3>
+                <p><strong>Location:</strong> W Georgia (Art Gallery)</p>
+                <p><strong>Menu:</strong> Burger & Fries, Mac n' Cheese</p>
+                <button onclick="orderNow('All-American Grill')">Order Now</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Food Truck Tracker</p>
+    </footer>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        function orderNow(truckName) {
+            alert(`You have ordered from ${truckName}!`);
+        }
+
+        function showSelectedTruck() {
+            const selectedTruck = document.getElementById('food-truck-select').value;
+            const truckContainer = document.getElementById('truck-container');
+            const truckCards = document.querySelectorAll('.truck-card');
+            
+            truckCards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            if (selectedTruck) {
+                truckContainer.style.display = 'flex';
+                document.getElementById(selectedTruck).style.display = 'block';
+            } else {
+                truckContainer.style.display = 'none';
+            }
+        }
+
+        function toggleMenu() {
+            var ul = document.querySelector('.navbar ul');
+            if (ul.style.display === 'none' || ul.style.display === '') {
+                ul.style.display = 'block';
+            } else {
+                ul.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
